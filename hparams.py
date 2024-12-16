@@ -25,11 +25,11 @@ class hparams:
     pth = None
     lr = 4e-4
     sch = False  # 不啟用學習率調度器
-    max_iter = 1310  # 总迭代次数
+    max_iter = 10  # 总迭代次数
     batch_size = 10  # 每个 batch 的样本数
-    iters_per_log = 1310  # 每个 epoch 打印一次日志
-    iters_per_sample = 1310  # 每个 epoch 保存一次样本
-    iters_per_ckpt = 1310  # 每个 epoch 保存一次检查点
+    iters_per_log = 5  # 每个 epoch 打印一次日志
+    iters_per_sample = 5  # 每个 epoch 保存一次样本
+    iters_per_ckpt = 5  # 每个 epoch 保存一次检查点
 
     gn = 10  
     n=5
