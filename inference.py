@@ -45,7 +45,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--ckpt_pth', type=str, required=True, help='Path to load checkpoints')
     parser.add_argument('-s', '--src_pth', type=str, default='', help='Path to source audio (optional if using mel)')
-    parser.add_argument('-m', '--mel_pth', type=str, default='', help='Path to source mel-spectrogram (optional)')
+    parser.add_argument('-m', '--mel_pth', type=str, default='/content/drive/MyDrive/mel', help='Path to source mel-spectrogram (optional)')
     parser.add_argument('-r', '--res_pth', type=str, required=True, help='Path to save output wavs')
 
     args = parser.parse_args()
