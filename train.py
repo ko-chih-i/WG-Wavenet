@@ -83,8 +83,8 @@ def train(args):
 
             # forward
             outputs = model(wavs, mels)
+        
             p_wavs = model.infer(mels) if iteration % hps.n == 0 else None
-            
             # loss
             loss = criterion(outputs, p_wavs, wavs)
             
@@ -128,7 +128,7 @@ def train(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # path
-    parser.add_argument('-d', '--data_dir', type=str, default='/content/drive/MyDrive/training_data',
+    parser.add_argument('-d', '--data_dir', type=str, default='/content/drive/MyDrive/LJSpeech-1.1',
                         help='directory to load data')
     parser.add_argument('-l', '--log_dir', type=str, default='log',
                         help='directory to save tensorboard logs')
