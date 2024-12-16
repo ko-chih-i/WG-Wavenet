@@ -54,7 +54,8 @@ class MultiResolutionSTFTLoss(torch.nn.Module):
 		self.bases = []
 		for fs, ss, wl, sc in zip(fft_sizes, hop_sizes, win_lengths, mel_scales):
 			self.stft_losses += [STFTLoss(fs, ss, wl, window)]
-			b = librosa.filters.mel(hps.sample_rate, fs, n_mels = hps.num_mels*sc, fmax = hps.fmax).T
+			b = librosa.filters.mel(sr=hps.sample_rate, n_fft=fs, n_mels=hps.num_mels*sc, fmax=hps.fmax).T
+
 			self.bases += [mode(torch.Tensor(b))]
 
 	def forward(self, x, y):
@@ -144,7 +145,8 @@ def stft(x, fft_size, hop_size, win_length, window, b):
 		Tensor: Magnitude spectrogram (B, #frames, fft_size // 2 + 1).
 
 	"""
-	x_stft = torch.stft(x, fft_size, hop_size, win_length, window)
+	x_stft = torch.stft(x, n_fft=fft_size, hop_length=hop_size, win_length=win_length, window=window, return_complex=False)
+
 	real = x_stft[..., 0]
 	imag = x_stft[..., 1]
 
